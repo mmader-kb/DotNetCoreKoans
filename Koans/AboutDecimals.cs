@@ -42,7 +42,7 @@ namespace DotNetCoreKoans.Koans
             double db = 7.4d;
 
             var result = 0m;
-            result = d + (decimal) 4.2f;
+            result = d + (decimal) f;
 
             Assert.Equal(9.3m, result);
 
@@ -55,12 +55,12 @@ namespace DotNetCoreKoans.Koans
         public void DecimalsHaveMaximumAndMinimumValues()
         {
             // Even the zen of the decimal has its limits...
-            Assert.Throws(typeof(FillMeIn), () =>
+            Assert.Throws(typeof(System.OverflowException), () =>
             {
                 var d = decimal.Parse("79,228,162,514,264,337,593,543,950,336",CultureInfo.InvariantCulture);
             });
 
-            Assert.Throws(typeof(FillMeIn), () =>
+            Assert.Throws(typeof(System.OverflowException), () =>
             {
                 var d = decimal.Parse("-79,228,162,514,264,337,593,543,950,336",CultureInfo.InvariantCulture);
             });
@@ -72,8 +72,8 @@ namespace DotNetCoreKoans.Koans
             var twentyEightDigits = 0.9999999999999999999999999999m;
             var twentyNineDigits = 0.99999999999999999999999999999m;
 
-            Assert.Equal(FILL_ME_IN, twentyEightDigits);
-            Assert.Equal(FILL_ME_IN, twentyNineDigits);
+            Assert.Equal(0.9999999999999999999999999999m, twentyEightDigits);
+            Assert.Equal(decimal.One, twentyNineDigits);
 
             //Decimals use 128 bits to store their data, therefore they can store
             //up to 28 significant digits
@@ -85,7 +85,7 @@ namespace DotNetCoreKoans.Koans
             var d = 0.1m;
             var result = d + d + d + d + d + d + d;
 
-            Assert.False(result == 0.7m);
+            Assert.True(result == 0.7m);
 
             //The zen of the decimal is quite exceptional indeed. Unlike
             //floats, they are able to handle math the way humans expect. 
