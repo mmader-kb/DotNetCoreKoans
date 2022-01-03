@@ -11,7 +11,7 @@ namespace DotNetCoreKoans.Koans
         {
             var d = 1m;
 
-            Assert.Equal(typeof(FillMeIn), d.GetType());
+            Assert.Equal(typeof(decimal), d.GetType());
         }
 
         [Step(2)]
@@ -25,7 +25,7 @@ namespace DotNetCoreKoans.Koans
 
             var result = d + n;
 
-            Assert.Equal(FILL_ME_IN, result);
+            Assert.Equal(12.2m, result);
 
             // Notice that the result is a decimal when you do this
         }
@@ -42,11 +42,11 @@ namespace DotNetCoreKoans.Koans
             double db = 7.4d;
 
             var result = 0m;
-            //result = d + (FillMeIn) f;
+            result = d + (decimal) 4.2f;
 
             Assert.Equal(9.3m, result);
 
-            //result = d + (FillMeIn) db;
+            result = d + (decimal) db;
 
             Assert.Equal(12.5m, result);
         }
